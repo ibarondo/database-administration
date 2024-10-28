@@ -2,7 +2,7 @@
 include("connect.php");
 
 // Update the query to select data from the userinfo table
-$query = "SELECT * FROM userinfo";
+$query = "SELECT firstName, lastName, userID, birthDay FROM userinfo";
 
 $result = executeQuery($query);
 ?>
