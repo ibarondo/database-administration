@@ -19,42 +19,55 @@ $result = executeQuery($query);
 </head>
 
 <body>
-  <div class="container-fluid shadow mb-5 p-3">
-    <h1>User Information</h1>
-  </div>
-  <div class="container">
-    <div class="row">
-
-      <!-- PHP BLOCK -->
-      <?php
-      if (mysqli_num_rows($result)) {
-        while ($user = mysqli_fetch_assoc($result)) {
-          ?>
-
-          <div class="col-12">
-            <div class="card rounded-4 shadow my-3 mx-2" style="background-color: beige">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <?php echo $user["firstName"] . " " . $user["lastName"]; ?>
-                </h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">
-                  User ID: <?php echo $user["userID"]; ?>
-                </h6>
-                <p class="card-text">
-                  Birth Date: <?php echo $user["birthDay"]; ?>
-                </p>
-              </div>
-            </div>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h3>User Information</h3>
           </div>
+          <div class="card-body">
+            <!-- PHP BLOCK -->
+            <?php
+            if (mysqli_num_rows($result)) {
+            ?>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">User ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Birth Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
 
-          <?php
-        }
-      } else {
-        echo "<div class='col-12'><p>No users found.</p></div>";
-      }
-      ?>
+                  while ($user = mysqli_fetch_assoc($result)) {
+                  ?>
+                    <tr>
+                      <td><?php echo $user["userID"]; ?></td>
+                      <td><?php echo $user["firstName"]; ?></td>
+                      <td><?php echo $user["lastName"]; ?></td>
+                      <td><?php echo $user["birthDay"]; ?></td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
+                </tbody>
+              </table>
+            <?php
+            } else {
+              echo "<div class='col-12'><p>No users found.</p></div>";
+            }
+            ?>
 
+
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
