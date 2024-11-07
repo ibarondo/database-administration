@@ -61,8 +61,6 @@ $result = executeQuery($query);
               echo "<div class='col-12'><p>No users found.</p></div>";
             }
             ?>
-
-
           </div>
         </div>
       </div>
