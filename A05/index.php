@@ -56,8 +56,6 @@ $result = executeQuery($query);
                 </tbody>
               </table>
               <?php
-            } else {
-              echo "<div class='col-12'><p>No users found.</p></div>";
             }
             ?>
           </div>
